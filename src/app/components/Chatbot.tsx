@@ -66,7 +66,7 @@ export default function Chatbot() {
 
             {/* Content */}
             <div className="flex-1 overflow-y-auto p-4">
-              <p className="text-gray-600 mb-4">Hi! I'm here to help with questions about investing and insurance. Click on a question below:</p>
+              <p className="text-gray-600 mb-4">Hi! I&apos;m here to help with questions about investing and insurance. Click on a question below:</p>
 
               {selectedFaq !== null && (
                 <div className="bg-gray-50 p-3 rounded-lg mb-4">
