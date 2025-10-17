@@ -1,102 +1,150 @@
-import Image from "next/image";
-
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="min-h-screen bg-gray-50">
+      {/* Header */}
+      <header className="bg-white shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center py-4">
+            <div className="text-2xl font-bold text-blue-600">Divdesh Wealth</div>
+            <nav className="hidden md:flex space-x-8">
+              <a href="#home" className="text-gray-700 hover:text-blue-600">Home</a>
+              <a href="#about" className="text-gray-700 hover:text-blue-600">About</a>
+              <a href="#services" className="text-gray-700 hover:text-blue-600">Services</a>
+              <a href="#contact" className="text-gray-700 hover:text-blue-600">Contact</a>
+            </nav>
+            <a href="mailto:gulti.div@gmail.com?subject=Book Appointment" className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+              Book Appointment
+            </a>
+          </div>
+        </div>
+      </header>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
+      {/* Hero Section */}
+      <section id="home" className="bg-blue-600 text-white py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-4xl md:text-6xl font-bold mb-4">
+            Secure Your Financial Future
+          </h1>
+          <p className="text-xl md:text-2xl mb-8">
+            Expert guidance on investing and insurance to help you make informed decisions
+          </p>
+          <a href="mailto:gulti.div@gmail.com?subject=Book Appointment" className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 text-lg">
+            Book an Appointment
           </a>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      </section>
+
+      {/* Why Choose Us */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">Why Choose Divdesh Wealth?</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="text-center">
+              <div className="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <span className="text-blue-600 text-2xl">✓</span>
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Expert Advice</h3>
+              <p className="text-gray-600">Personalized guidance from experienced financial advisors</p>
+            </div>
+            <div className="text-center">
+              <div className="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <span className="text-blue-600 text-2xl">📚</span>
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Educational Approach</h3>
+              <p className="text-gray-600">We simplify complex topics to help you understand and decide</p>
+            </div>
+            <div className="text-center">
+              <div className="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <span className="text-blue-600 text-2xl">🚫</span>
+              </div>
+              <h3 className="text-xl font-semibold mb-2">No Spam</h3>
+              <p className="text-gray-600">Respectful communication at your convenience</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services */}
+      <section id="services" className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">Our Services</h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-white p-8 rounded-lg shadow-sm">
+              <h3 className="text-2xl font-semibold mb-4 text-blue-600">Investing Guidance</h3>
+              <p className="text-gray-600 mb-4">
+                Learn about mutual funds, stocks, and other investment options. We help you build a portfolio that suits your risk appetite and goals.
+              </p>
+              <ul className="list-disc list-inside text-gray-600">
+                <li>Portfolio analysis</li>
+                <li>Risk assessment</li>
+                <li>Market insights</li>
+              </ul>
+            </div>
+            <div className="bg-white p-8 rounded-lg shadow-sm">
+              <h3 className="text-2xl font-semibold mb-4 text-blue-600">Insurance Advisory</h3>
+              <p className="text-gray-600 mb-4">
+                Protect your family and assets with the right insurance policies. We compare options and guide you through the process.
+              </p>
+              <ul className="list-disc list-inside text-gray-600">
+                <li>Term life insurance</li>
+                <li>Health insurance</li>
+                <li>Claims assistance</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">What Our Clients Say</h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-gray-50 p-6 rounded-lg">
+              <p className="text-gray-600 mb-4">"Divdesh Wealth helped me understand investing without the jargon. Now I feel confident about my financial future."</p>
+              <p className="font-semibold">- Client A</p>
+            </div>
+            <div className="bg-gray-50 p-6 rounded-lg">
+              <p className="text-gray-600 mb-4">"Their insurance advisory was straightforward and no pressure. Highly recommend!"</p>
+              <p className="font-semibold">- Client B</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-16 bg-blue-600 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl font-bold mb-4">Ready to Take Control of Your Finances?</h2>
+          <p className="text-xl mb-8">Book a free consultation today and start your journey towards financial security.</p>
+          <a href="mailto:gulti.div@gmail.com?subject=Book Appointment" className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 text-lg">
+            Book an Appointment
+          </a>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer id="contact" className="bg-gray-900 text-white py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-3 gap-8">
+            <div>
+              <h3 className="text-xl font-semibold mb-4">Divdesh Wealth</h3>
+              <p className="text-gray-400">Expert financial guidance for investing and insurance.</p>
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold mb-4">Contact</h3>
+              <p className="text-gray-400">Email: gulti.div@gmail.com</p>
+              <p className="text-gray-400">Phone: +1 (123) 456-7890</p>
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold mb-4">Follow Us</h3>
+              <p className="text-gray-400">Social media links</p>
+            </div>
+          </div>
+          <div className="mt-8 pt-8 border-t border-gray-700 text-center text-gray-400">
+            <p>&copy; 2024 Divdesh Wealth. All rights reserved.</p>
+          </div>
+        </div>
       </footer>
     </div>
   );
