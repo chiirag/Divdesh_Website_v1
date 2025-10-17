@@ -101,11 +101,11 @@ export default function Home() {
           <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">What Our Clients Say</h2>
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-gray-50 p-6 rounded-lg">
-              <p className="text-gray-600 mb-4">"Divdesh Wealth helped me understand investing without the jargon. Now I feel confident about my financial future."</p>
+              <p className="text-gray-600 mb-4">&ldquo;Divdesh Wealth helped me understand investing without the jargon. Now I feel confident about my financial future.&rdquo;</p>
               <p className="font-semibold">- Client A</p>
             </div>
             <div className="bg-gray-50 p-6 rounded-lg">
-              <p className="text-gray-600 mb-4">"Their insurance advisory was straightforward and no pressure. Highly recommend!"</p>
+              <p className="text-gray-600 mb-4">&ldquo;Their insurance advisory was straightforward and no pressure. Highly recommend!&rdquo;</p>
               <p className="font-semibold">- Client B</p>
             </div>
           </div>
