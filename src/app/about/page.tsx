@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function About() {
   return (
     <div className="min-h-screen bg-gray-50">
@@ -7,7 +9,7 @@ export default function About() {
           <div className="flex justify-between items-center py-4">
             <div className="text-2xl font-bold text-primary">Divdesh Wealth</div>
             <nav className="hidden md:flex space-x-8">
-              <a href="/" className="text-gray-700 hover:text-primary">Home</a>
+              <Link href="/" className="text-gray-700 hover:text-primary">Home</Link>
               <a href="/about" className="text-gray-700 hover:text-primary">About Us</a>
               <a href="/insurance" className="text-gray-700 hover:text-primary">Insurance</a>
               <a href="/investing" className="text-gray-700 hover:text-primary">Investing</a>

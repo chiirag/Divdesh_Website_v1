@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function Investing() {
   return (
     <div className="min-h-screen bg-gray-50">
@@ -7,7 +9,7 @@ export default function Investing() {
           <div className="flex justify-between items-center py-4">
             <div className="text-2xl font-bold text-primary">Divdesh Wealth</div>
             <nav className="hidden md:flex space-x-8">
-              <a href="/" className="text-gray-700 hover:text-primary">Home</a>
+              <Link href="/" className="text-gray-700 hover:text-primary">Home</Link>
               <a href="/about" className="text-gray-700 hover:text-primary">About Us</a>
               <a href="/insurance" className="text-gray-700 hover:text-primary">Insurance</a>
               <a href="/investing" className="text-gray-700 hover:text-primary">Investing</a>
@@ -28,7 +30,7 @@ export default function Investing() {
             <h2 className="text-2xl font-semibold mb-4 text-primary">What is Investing?</h2>
             <p className="text-gray-600 mb-6">
               Investing involves putting money into assets with the expectation of generating income or profit over time.
-              It's about growing your wealth through various financial instruments and markets.
+              It&apos;s about growing your wealth through various financial instruments and markets.
             </p>
           </div>
 
@@ -43,7 +45,7 @@ export default function Investing() {
             <div className="bg-gray-50 p-6 rounded-lg">
               <h3 className="text-xl font-semibold mb-3 text-primary">Diversification</h3>
               <p className="text-gray-600">
-                Don't put all your eggs in one basket. Spread your investments across different asset
+                Don&apos;t put all your eggs in one basket. Spread your investments across different asset
                 classes to reduce risk.
               </p>
             </div>
