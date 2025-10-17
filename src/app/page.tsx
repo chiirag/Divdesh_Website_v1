@@ -132,7 +132,7 @@ export default function Home() {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">What Our Clients Say</h2>
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
               <p className="text-gray-800 mb-4">&ldquo;Divdesh Wealth helped me understand investing without the jargon. Now I feel confident about my financial future.&rdquo;</p>
               <p className="font-semibold text-primary">- Chirag Jain</p>
@@ -140,6 +140,14 @@ export default function Home() {
             <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
               <p className="text-gray-800 mb-4">&ldquo;Their insurance advisory was straightforward and no pressure. Highly recommend!&rdquo;</p>
               <p className="font-semibold text-primary">- Naman Nanda</p>
+            </div>
+            <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+              <p className="text-gray-800 mb-4">&ldquo;The personalized investment strategy helped me achieve my financial goals faster than expected.&rdquo;</p>
+              <p className="font-semibold text-primary">- Lipi Gulati</p>
+            </div>
+            <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+              <p className="text-gray-800 mb-4">&ldquo;Professional guidance on insurance that gave me peace of mind for my family's future.&rdquo;</p>
+              <p className="font-semibold text-primary">- Ankruti Sahni</p>
             </div>
           </div>
         </div>
