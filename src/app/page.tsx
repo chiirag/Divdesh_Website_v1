@@ -105,11 +105,11 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-gray-50 p-6 rounded-lg">
               <p className="text-gray-600 mb-4">&ldquo;Divdesh Wealth helped me understand investing without the jargon. Now I feel confident about my financial future.&rdquo;</p>
-              <p className="font-semibold">- Client A</p>
+              <p className="font-semibold">- Chirag Jain</p>
             </div>
             <div className="bg-gray-50 p-6 rounded-lg">
               <p className="text-gray-600 mb-4">&ldquo;Their insurance advisory was straightforward and no pressure. Highly recommend!&rdquo;</p>
-              <p className="font-semibold">- Client B</p>
+              <p className="font-semibold">- Naman Nanda</p>
             </div>
           </div>
         </div>
