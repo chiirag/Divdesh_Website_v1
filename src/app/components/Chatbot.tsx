@@ -1,37 +1,124 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
-const faqs = [
-  {
-    question: "What is insurance?",
-    answer: "Insurance is a contract where you pay premiums to an insurance company in exchange for financial protection against potential losses or damages."
-  },
-  {
-    question: "What are the main types of investments?",
-    answer: "The main types include stocks, bonds, mutual funds, ETFs, and fixed deposits. Each has different risk and return profiles."
-  },
-  {
-    question: "How do I choose the right insurance policy?",
-    answer: "Consider your needs, budget, and coverage requirements. We recommend consulting with a financial advisor to compare options."
-  },
-  {
-    question: "What's the difference between term and whole life insurance?",
-    answer: "Term life insurance provides coverage for a specific period and is generally cheaper, while whole life insurance provides lifelong coverage and builds cash value."
-  },
-  {
-    question: "How can I start investing?",
-    answer: "Start by assessing your risk tolerance and financial goals. Consider diversified investments and consult with a financial advisor for personalized guidance."
-  },
-  {
-    question: "What is compound interest?",
-    answer: "Compound interest is the interest you earn on both your original investment and the interest you've already earned. It can significantly grow your wealth over time."
-  }
-];
+interface Message {
+  id: string;
+  text: string;
+  sender: 'user' | 'bot';
+  timestamp: Date;
+}
+
+const SYSTEM_PROMPT = `You are an AI assistant for Divdesh Wealth, a financial advisory company specializing in wealth management, investing, and insurance. 
+
+Your role:
+- Answer questions about investing, wealth management, insurance, and financial planning
+- Be professional, helpful, and educational
+- Represent Divdesh Wealth positively
+- Encourage users to book appointments for personalized advice
+- Do not answer questions outside of finance, investing, insurance, or wealth management
+- If asked about unrelated topics, politely redirect to financial topics
+
+Company information:
+- Divdesh Wealth provides expert guidance on investing and insurance
+- We help individuals secure their financial future
+- Our advisors are experienced in mutual funds, stocks, term life insurance, health insurance, etc.
+- We prioritize education and transparency
+
+Always end responses that require personalized advice by suggesting they book an appointment with our experts.`;
+
+const WELCOME_MESSAGE: Message = {
+  id: 'welcome',
+  text: "Hi! I'm the Divdesh Wealth assistant. I can help answer your questions about investing, wealth management, and insurance. How can I assist you today?",
+  sender: 'bot',
+  timestamp: new Date()
+};
 
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedFaq, setSelectedFaq] = useState<number | null>(null);
+  const [messages, setMessages] = useState<Message[]>([WELCOME_MESSAGE]);
+  const [inputValue, setInputValue] = useState('');
+  const [isTyping, setIsTyping] = useState(false);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
+  // Call API for bot response
+  const getBotResponse = async (userMessage: string): Promise<string> => {
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ message: userMessage }),
+      });
+
+      if (!response.ok) {
+        throw new Error('API request failed');
+      }
+
+      const data = await response.json();
+      return data.response;
+    } catch (error) {
+      console.error('Error getting bot response:', error);
+      // Fallback response
+      return "I'm sorry, I'm having trouble connecting right now. Please try again later or contact us directly at gulti.div@gmail.com.";
+    }
+  };
+
+  const handleSendMessage = async () => {
+    if (!inputValue.trim()) return;
+
+    const userMessage: Message = {
+      id: Date.now().toString(),
+      text: inputValue,
+      sender: 'user',
+      timestamp: new Date()
+    };
+
+    setMessages(prev => [...prev, userMessage]);
+    setInputValue('');
+    setIsTyping(true);
+
+    try {
+      // Simulate API delay
+      await new Promise(resolve => setTimeout(resolve, 1000 + Math.random() * 2000));
+
+      const botResponse = await getBotResponse(inputValue);
+      const botMessage: Message = {
+        id: (Date.now() + 1).toString(),
+        text: botResponse,
+        sender: 'bot',
+        timestamp: new Date()
+      };
+
+      setMessages(prev => [...prev, botMessage]);
+    } catch (error) {
+      const errorMessage: Message = {
+        id: (Date.now() + 1).toString(),
+        text: "I'm sorry, I'm having trouble connecting right now. Please try again later or contact us directly at gulti.div@gmail.com.",
+        sender: 'bot',
+        timestamp: new Date()
+      };
+      setMessages(prev => [...prev, errorMessage]);
+    } finally {
+      setIsTyping(false);
+    }
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleSendMessage();
+    }
+  };
 
   return (
     <>
@@ -52,7 +139,10 @@ export default function Chatbot() {
           <div className="bg-white rounded-lg shadow-xl w-full max-w-md h-96 flex flex-col">
             {/* Header */}
             <div className="bg-primary text-white p-4 rounded-t-lg flex justify-between items-center">
-              <h3 className="font-semibold">Divdesh Wealth Assistant</h3>
+              <div>
+                <h3 className="font-semibold">Divdesh Wealth Assistant</h3>
+                <p className="text-sm opacity-90">Ask me about investing & insurance</p>
+              </div>
               <button
                 onClick={() => setIsOpen(false)}
                 className="text-white hover:text-gray-200"
@@ -64,47 +154,74 @@ export default function Chatbot() {
               </button>
             </div>
 
-            {/* Content */}
-            <div className="flex-1 overflow-y-auto p-4">
-              <p className="text-gray-600 mb-4">Hi! I&apos;m here to help with questions about investing and insurance. Click on a question below:</p>
-
-              {selectedFaq !== null && (
-                <div className="bg-gray-50 p-3 rounded-lg mb-4">
-                  <p className="font-semibold text-primary">{faqs[selectedFaq].question}</p>
-                  <p className="text-gray-700 mt-2">{faqs[selectedFaq].answer}</p>
-                  <button
-                    onClick={() => setSelectedFaq(null)}
-                    className="text-sm text-primary hover:underline mt-2"
+            {/* Messages */}
+            <div className="flex-1 overflow-y-auto p-4 space-y-4">
+              {messages.map((message) => (
+                <div
+                  key={message.id}
+                  className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
+                >
+                  <div
+                    className={`max-w-xs lg:max-w-md px-4 py-2 rounded-lg ${
+                      message.sender === 'user'
+                        ? 'bg-primary text-white'
+                        : 'bg-gray-100 text-gray-800'
+                    }`}
                   >
-                    Ask another question
-                  </button>
+                    <p className="text-sm">{message.text}</p>
+                    <p className={`text-xs mt-1 ${
+                      message.sender === 'user' ? 'text-primary-foreground/70' : 'text-gray-500'
+                    }`}>
+                      {message.timestamp.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
+                    </p>
+                  </div>
+                </div>
+              ))}
+
+              {isTyping && (
+                <div className="flex justify-start">
+                  <div className="bg-gray-100 text-gray-800 px-4 py-2 rounded-lg">
+                    <div className="flex space-x-1">
+                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
+                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
+                    </div>
+                  </div>
                 </div>
               )}
 
-              {selectedFaq === null && (
-                <div className="space-y-2">
-                  {faqs.map((faq, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setSelectedFaq(index)}
-                      className="w-full text-left p-3 rounded-lg border border-gray-200 hover:border-primary hover:bg-primary/5 transition-colors"
-                    >
-                      {faq.question}
-                    </button>
-                  ))}
-                </div>
-              )}
+              <div ref={messagesEndRef} />
             </div>
 
-            {/* Footer */}
+            {/* Input */}
             <div className="border-t p-4">
-              <p className="text-sm text-gray-500 text-center">
-                Need personalized advice?{' '}
+              <div className="flex space-x-2">
+                <input
+                  type="text"
+                  value={inputValue}
+                  onChange={(e) => setInputValue(e.target.value)}
+                  onKeyPress={handleKeyPress}
+                  placeholder="Ask about investing or insurance..."
+                  className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  disabled={isTyping}
+                />
+                <button
+                  onClick={handleSendMessage}
+                  disabled={!inputValue.trim() || isTyping}
+                  className="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/80 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                  </svg>
+                </button>
+              </div>
+              <p className="text-xs text-gray-500 mt-2 text-center">
+                Powered by AI • For personalized advice,{' '}
                 <a
-                  href="mailto:gulti.div@gmail.com?subject=Investment/Insurance Question"
+                  href="mailto:gulti.div@gmail.com?subject=Book Consultation"
                   className="text-primary hover:underline"
                 >
-                  Contact us
+                  contact our experts
                 </a>
               </p>
             </div>
