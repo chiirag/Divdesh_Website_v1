@@ -5,14 +5,14 @@ export default function Home() {
       <header className="bg-white shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
-            <div className="text-2xl font-bold text-blue-600">Divdesh Wealth</div>
+            <div className="text-2xl font-bold text-primary">Divdesh Wealth</div>
             <nav className="hidden md:flex space-x-8">
-              <a href="#home" className="text-gray-700 hover:text-blue-600">Home</a>
-              <a href="#about" className="text-gray-700 hover:text-blue-600">About</a>
-              <a href="#services" className="text-gray-700 hover:text-blue-600">Services</a>
-              <a href="#contact" className="text-gray-700 hover:text-blue-600">Contact</a>
+              <a href="/" className="text-gray-700 hover:text-primary">Home</a>
+              <a href="/about" className="text-gray-700 hover:text-primary">About Us</a>
+              <a href="/insurance" className="text-gray-700 hover:text-primary">Insurance</a>
+              <a href="/investing" className="text-gray-700 hover:text-primary">Investing</a>
             </nav>
-            <a href="mailto:gulti.div@gmail.com?subject=Book Appointment" className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+            <a href="mailto:gulti.div@gmail.com?subject=Book Appointment" className="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/80">
               Book Appointment
             </a>
           </div>
@@ -20,15 +20,16 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section id="home" className="bg-blue-600 text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section id="home" className="bg-primary text-white py-20 bg-cover bg-center relative" style={{backgroundImage: "url('https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2071&q=80')"}}>
+        <div className="absolute inset-0 bg-primary/80"></div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-4">
             Secure Your Financial Future
           </h1>
           <p className="text-xl md:text-2xl mb-8">
             Expert guidance on investing and insurance to help you make informed decisions
           </p>
-          <a href="mailto:gulti.div@gmail.com?subject=Book Appointment" className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 text-lg">
+          <a href="mailto:gulti.div@gmail.com?subject=Book Appointment" className="bg-white text-primary px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 text-lg">
             Book an Appointment
           </a>
         </div>
@@ -40,22 +41,22 @@ export default function Home() {
           <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">Why Choose Divdesh Wealth?</h2>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center">
-              <div className="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                <span className="text-blue-600 text-2xl">✓</span>
+              <div className="bg-primary/10 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <span className="text-primary text-2xl">✓</span>
               </div>
               <h3 className="text-xl font-semibold mb-2">Expert Advice</h3>
               <p className="text-gray-600">Personalized guidance from experienced financial advisors</p>
             </div>
             <div className="text-center">
-              <div className="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                <span className="text-blue-600 text-2xl">📚</span>
+              <div className="bg-primary/10 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <span className="text-primary text-2xl">📚</span>
               </div>
               <h3 className="text-xl font-semibold mb-2">Educational Approach</h3>
               <p className="text-gray-600">We simplify complex topics to help you understand and decide</p>
             </div>
             <div className="text-center">
-              <div className="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                <span className="text-blue-600 text-2xl">🚫</span>
+              <div className="bg-primary/10 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <span className="text-primary text-2xl">🚫</span>
               </div>
               <h3 className="text-xl font-semibold mb-2">No Spam</h3>
               <p className="text-gray-600">Respectful communication at your convenience</p>
@@ -70,7 +71,7 @@ export default function Home() {
           <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">Our Services</h2>
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-white p-8 rounded-lg shadow-sm">
-              <h3 className="text-2xl font-semibold mb-4 text-blue-600">Investing Guidance</h3>
+              <h3 className="text-2xl font-semibold mb-4 text-primary">Investing Guidance</h3>
               <p className="text-gray-600 mb-4">
                 Learn about mutual funds, stocks, and other investment options. We help you build a portfolio that suits your risk appetite and goals.
               </p>
@@ -81,7 +82,7 @@ export default function Home() {
               </ul>
             </div>
             <div className="bg-white p-8 rounded-lg shadow-sm">
-              <h3 className="text-2xl font-semibold mb-4 text-blue-600">Insurance Advisory</h3>
+              <h3 className="text-2xl font-semibold mb-4 text-primary">Insurance Advisory</h3>
               <p className="text-gray-600 mb-4">
                 Protect your family and assets with the right insurance policies. We compare options and guide you through the process.
               </p>
@@ -113,11 +114,11 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-blue-600 text-white">
+      <section className="py-16 bg-primary text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to Take Control of Your Finances?</h2>
           <p className="text-xl mb-8">Book a free consultation today and start your journey towards financial security.</p>
-          <a href="mailto:gulti.div@gmail.com?subject=Book Appointment" className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 text-lg">
+          <a href="mailto:gulti.div@gmail.com?subject=Book Appointment" className="bg-white text-primary px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 text-lg">
             Book an Appointment
           </a>
         </div>
